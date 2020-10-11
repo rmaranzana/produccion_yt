@@ -80,7 +80,4 @@ def agregar_tarea(diagrama, t0, d, maq, nombre, color=None):
                   s=f"{nombre} ({d})", va='center', ha='center', color='white')
 
 def mostrar(diagrama):
-    diagrama["fig"].savefig("fig2.png", dpi=225)
-
-
-
+    plt.show()
