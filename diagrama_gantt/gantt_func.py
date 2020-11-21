@@ -79,5 +79,5 @@ def agregar_tarea(diagrama, t0, d, maq, nombre, color=None):
     gantt.text(x=(t0 + d/2), y=(hbar*imaq + hbar/2),
                   s=f"{nombre} ({d})", va='center', ha='center', color='white')
 
-def mostrar(diagrama):
+def mostrar():
     plt.show()
