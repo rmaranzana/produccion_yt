@@ -38,7 +38,7 @@ for i_tarea in secuencia:
         tn_maq_presente = tn_etapa[i_maquina]
 
         # Obtenemos el t0:
-        if (i_maquina) > 0 & (tn_maq_anterior > tn_maq_presente):
+        if (i_maquina > 0) & (tn_maq_anterior > tn_maq_presente):
             t0 = tn_maq_anterior
         else:
             t0 = tn_maq_presente
