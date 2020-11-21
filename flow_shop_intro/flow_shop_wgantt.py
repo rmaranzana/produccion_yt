@@ -51,24 +51,6 @@ for i_tarea in secuencia:
 
 print(calendario)
 
-from gantt_fs import crear_gantt, agregar_subtarea, mostrar
+from gantt_fs import crear_y_mostrar_gantt_fs
 
-# Horizonte temporal:
-ultima_subtarea = calendario[-1]
-ht = ultima_subtarea["t0"] + ultima_subtarea["d"]
-
-# Creamos el diagrama de gantt:
-diagrama = crear_gantt(nombre_maq, ht)
-
-# Agregamos las subtareas:
-for subtarea in calendario:
-
-    agregar_subtarea(
-        diagrama,
-        subtarea["t0"],
-        subtarea["d"],
-        nombre_maq[subtarea["i_maq"]],
-        nombre_tar[subtarea["i_tarea"]]
-    )
-
-mostrar()
+crear_y_mostrar_gantt_fs(calendario, nombre_maq, nombre_tar)

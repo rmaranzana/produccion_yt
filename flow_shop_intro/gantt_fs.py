@@ -80,5 +80,31 @@ def agregar_subtarea(diagrama, t0, d, maq, nombre_tarea, color=None):
     gantt.text(x=(t0 + d/2), y=(hbar*imaq + hbar/2),
                   s=f"{nombre_tarea} ({d})", va='center', ha='center', color='white')
 
+def completar_gantt(diagrama, calendario, n_maqs, n_tareas):
+    # Agregamos las subtareas:
+    for subtarea in calendario:
+
+        agregar_subtarea(
+            diagrama,
+            subtarea["t0"],
+            subtarea["d"],
+            n_maqs[subtarea["i_maq"]],
+            n_tareas[subtarea["i_tarea"]]
+        )
+
+def crear_y_mostrar_gantt_fs(calendario, n_maqs, n_tareas):
+    # Horizonte temporal:
+    ultima_subtarea = calendario[-1]
+    ht = ultima_subtarea["t0"] + ultima_subtarea["d"]
+
+    # Creamos el diagrama de gantt:
+    diagrama = crear_gantt(n_maqs, ht)
+
+    # Completamos el gantt:
+    completar_gantt(diagrama, calendario, n_maqs, n_tareas)
+
+    # Plotteamos:
+    mostrar()
+
 def mostrar():
     plt.show()
