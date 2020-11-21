@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import random
 
-def crear_gantt(maquinas, ht):
+def inicializar_gantt(maquinas, ht):
     # Parámetros:
     hbar = 10
     tticks = 10
@@ -92,16 +92,23 @@ def completar_gantt(diagrama, calendario, n_maqs, n_tareas):
             n_tareas[subtarea["i_tarea"]]
         )
 
-def crear_y_mostrar_gantt_fs(calendario, n_maqs, n_tareas):
+def crear_gantt_fs(calendario, n_maqs, n_tareas):
     # Horizonte temporal:
     ultima_subtarea = calendario[-1]
     ht = ultima_subtarea["t0"] + ultima_subtarea["d"]
 
     # Creamos el diagrama de gantt:
-    diagrama = crear_gantt(n_maqs, ht)
+    diagrama = inicializar_gantt(n_maqs, ht)
 
     # Completamos el gantt:
     completar_gantt(diagrama, calendario, n_maqs, n_tareas)
+
+    # Retornamos el diagrama:
+    return diagrama
+
+def crear_y_mostrar_gantt_fs(calendario, n_maqs, n_tareas):
+    # Creamos el gantt:
+    crear_gantt_fs(calendario, n_maqs, n_tareas)
 
     # Plotteamos:
     mostrar()
