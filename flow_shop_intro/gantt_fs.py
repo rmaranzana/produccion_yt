@@ -115,3 +115,6 @@ def crear_y_mostrar_gantt_fs(calendario, n_maqs, n_tareas):
 
 def mostrar():
     plt.show()
+
+def guardar_figura(diagrama):
+    diagrama['fig'].savefig('filename.png', dpi=225)
